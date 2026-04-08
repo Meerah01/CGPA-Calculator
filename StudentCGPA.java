@@ -22,6 +22,6 @@ public class StudentCGPA {
         }
         double cgpa = (double) totalCoursePoint / (double) totalCreditUnits;
 
-        System.out.println("The CGPA of " + name + " is " + cgpa );
+        System.out.printf("The CGPA of %s is %.2f", name, cgpa);
     }
 }
