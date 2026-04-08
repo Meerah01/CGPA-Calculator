@@ -1,14 +1,23 @@
 import java.util.Scanner;
 
-public class CGPA_Calculator {
+public class CGPACalculator {
     static byte gradePoint(char grade) {
-        if  (grade == 'A' || grade == 'a') return 5;
-        else if (grade == 'B' || grade == 'b') return 4;
-        else if (grade == 'C' || grade == 'c') return 3;
-        else if (grade == 'D' || grade == 'd') return 2;
-        else if (grade == 'E' || grade == 'e') return 1;
-        else return 0;
+        switch (grade) {
+            case 'A':
+                return 5;
+            case 'B':
+                return 4;
+            case 'C':
+                return 3;
+            case 'D':
+                return 2;
+            case 'E':
+                return 1;
+            default:
+                return 0;
+        }
     }
+
     public static void main(String[] args) {
         Scanner result = new Scanner(System.in);
         System.out.println("Enter the Student's name or matric number: ");
@@ -24,12 +33,13 @@ public class CGPA_Calculator {
             int creditUnit = result.nextInt();
             System.out.println("Enter the student's grade for course " + i + ": ");
             char grade = result.next().charAt(0);
+            char gradeUpper = Character.toUpperCase(grade);
 
-            totalCoursePoints += (creditUnit * gradePoint(grade));
+            totalCoursePoints += (creditUnit * gradePoint(gradeUpper));
             totalCreditUnits += creditUnit;
         }
 
         double cgpa = (double) totalCoursePoints / (double) totalCreditUnits;
-        System.out.println("The CGPA of " + name + " is " + cgpa );
+        System.out.printf("The CGPA of %s is %.2f", name, cgpa);
     }
 }
